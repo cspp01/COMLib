@@ -1,0 +1,94 @@
+/* /////////////////////图片/////////////////////// */
+/* 响应式 */
+img{
+  vertical-align:middle;
+  &.img-response{
+    max-width:100%;
+  }
+}
+/* ///////////////////////浮动///////////////////// */
+/* 清除浮动 */
+.clearfix{
+  zoom:1;
+  &:after{
+    content:'';
+    display:block;
+    clear:both;
+  }
+}
+/* 左浮动 */
+.f-left{
+  float:left;
+}
+/* 右浮动 */
+.f-right{
+  float:right;
+}
+.f-child{
+  *{
+    float:left;
+  }
+}
+/* /////////////////////////////////////////////// */
+/* 设置padding值为4px */
+.padd{
+    padding:4px;
+}
+///////////////////////文本对齐//////////////////////////////////
+/* 文本居中方式 */
+.center{
+  text-align:center;
+}
+/* 文本左方式 */
+.t-right{
+  text-align:right;
+}
+/* 文本右方式 */
+.t-left{
+  text-align:left;
+}
+///////////////////////属性//////////////////////////////////
+/* 背景颜色 */
+.bg-red{
+  background: #ff394a;
+}
+.bg-green{
+  background: #0be14a;
+}
+.bg-yellow{
+  background: #ffe424;
+}
+.bg-blue{
+  background: #5868ff;
+}
+li{
+  list-style:none;
+}
+a{
+  color: #434343;
+  text-decoration:none;
+  &:hover{
+    color:#333;
+  }
+}
+.color-fff{
+  color:#fff;
+}
+.child-color-fff{
+  *{
+    color:#fff;
+  }
+}
+// a标签颜色反转
+.a-color-reversal{
+  a{
+    color: #e8e8e8;
+    text-decoration:none;
+    &:hover{
+      color:#fff;
+    }
+  }
+}
+body{
+  font-size:14px;
+}

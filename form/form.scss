@@ -1,0 +1,76 @@
+/*//////////////////////////表单/////////////////////////*/
+// 设置按钮,button,type=button,type=reset,type=submit默认样式
+button,input[ type='button' ],input[ type='submit' ],input[ type='reset' ],
+button[ type='button' ],button[ type='submit' ],button[ type='reset' ]{
+  width: auto;
+  padding:7px 10px;
+  color:#fff;
+}
+// 给表单input添加默认样式
+.form-style{
+  outline:none;
+  border:none;
+  background:none;
+  @include border-radius-one( 5px );
+  width:100% !important;
+  &[ type = 'text' ], &[ type = 'password' ], &[ type = 'tel' ]{
+    border:1px solid #7d7d7d;
+    padding-left:5px;
+    height:35px;
+  }
+  &:focus{
+    @include box-shadow( 0,0,5px,0, rgba(125, 125, 125, 0.62));
+  }
+  &[ type = 'submit' ],&[ type = 'button' ]{
+    height:35px;
+  }
+  &[ type = 'radio' ],&[ type = 'checkbox' ]{
+    width:auto !important;
+    height:auto;
+    margin-right:5px;
+  }
+}
+select{ /*  记住 */
+  border:1px solid #7d7d7d;
+  padding-left:5px;
+  height:35px;
+  option{
+    padding:7px;
+  }
+  &.form-style {
+    outline: none;
+    border: none;
+    background: none;
+    @include border-radius-one(5px);
+    width: 100% !important;
+  }
+}
+textarea{
+  border:1px solid #7d7d7d;
+  padding-left:5px;
+  &.form-style {
+    outline: none;
+    border: none;
+    background: none;
+    @include border-radius-one(5px);
+    width: 100% !important;
+  }
+}
+button{
+  height:35px;
+  &.form-style {
+    outline: none;
+    border: none;
+    background: none;
+    @include border-radius-one(5px);
+    width: 100% !important;
+  }
+}
+// 表单组，用来包含input,默认下边距为10px;
+.form-group{
+  margin-bottom:10px;
+  label{
+    line-height:35px;
+    padding-right:3px;
+  }
+}

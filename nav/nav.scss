@@ -1,0 +1,318 @@
+.navbar{
+  // 导航栏高度
+  $MH:40px;
+  // 导航栏背景颜色
+  $MBG_COLOR: #e7413b;
+  // 导航栏字体颜色
+  $MF_COLOR:#efefef;
+  // 导航栏字体hover后的颜色
+  $MFH_COLOR:#fff;
+  min-height:$MH;
+  color:$MF_COLOR;
+  background:$MBG_COLOR;
+  // logo样式
+  .logo{
+    line-height:$MH;
+    float:left;
+    height:$MH;
+    color:#fff;
+    // 设定logo的图片不能超过导航栏高度
+    img{
+      max-height:$MH;
+      display:block;
+    }
+  }
+  //菜单栏
+  .menu{
+    line-height:$MH;
+    float:right;
+    &>ul{
+      float:left;
+      &:last-child{
+        margin-left:30px;
+      }
+      &>li{
+        float:left;
+        position:relative;
+        a{
+          color:$MF_COLOR;
+          display:block;
+          height:$MH;
+          padding:0 10px;
+          &:hover{
+            color:$MFH_COLOR;
+          }
+        }
+        ul{
+          display:none;
+          background:#e7413b;
+          @include transition(.5s);
+          &.drop-down{
+            position:absolute;
+            display:block;
+            width:150px;
+            top:50px;
+            left:-35px;
+            text-align:center;
+            &:before{
+              content:"";
+              display:block;
+              border-width:0 8px 8px;
+              border-color:transparent transparent #e7413b;
+              border-style:solid;
+              position:absolute;
+              top:-8px;
+              left:71px;
+            }
+            li{
+            }
+          }
+        }
+      }
+      &:after{
+        content:"";
+        display:block;
+        clear:both;
+      }
+    }
+  }
+  // 移动端菜单按钮
+  // 移动端菜单栏按钮，被继承的样式
+  .__btn__{
+    display:block;
+    width:22px;
+    height:2px;
+    background:#fff;
+    margin:5px 0;
+  }
+  button.mobile-menu{
+    background:none;
+    outline:none;
+    border:none;
+    // pc段不显示
+    display:none;
+    margin-right:15px;
+    float:right;
+    cursor:pointer;
+    @include transition(.5s);
+    // 移动端菜单栏按钮 --start--
+    &::before{
+      content:"";
+      @extend .__btn__;
+      @include transition(.5s);
+    }
+    span{
+      @extend .__btn__;
+      @include transition(.5s);
+    }
+    &::after{
+      content:"";
+      @extend .__btn__;
+      @include transition(.5s);
+    }
+    // --end--
+    // 移动端菜单栏按钮动画
+    &.active{
+      // 箭头效果
+      &.effect-1{
+        &::before{
+          @include transform-scale(16deg,left,center);
+        }
+        &::after{
+          @include transform-scale(-16deg,left,center);
+        }
+      }
+      // 合并效果
+      &.effect-2{
+        &::before{
+          @include transform-translate( 0, 5px );
+        }
+        &::after{
+          @include transform-translate( 0, -5px );
+        }
+      }
+      // 顶尖效果
+      &.effect-3{
+        &::before{
+          @include transform-translate( 3px, 0px );
+        }
+        &::after{
+          @include transform-translate( 3px, 0px );
+        }
+        span{
+          @include transform-translate( -3px, 0px );
+        }
+      }
+      // z字效果
+      &.effect-4{
+        span{
+          @include transform-scale(-33deg,center,center);
+        }
+      }
+      // 阶梯效果
+      &.effect-5{
+        &::before{
+          width:5px;
+        }
+        span{
+          width:13px;
+        }
+      }
+    }
+  }
+  // 响应式导航栏样式
+  &.nav-response{
+    position:relative;
+    @media ( max-width:$screen-md-min ) {
+      /* 移动端时的显示效果 */
+      // 移动端时logo样式
+      .logo{
+        margin-left:15px;
+      }
+      // 移动端时菜单样式
+      .menu {
+        // 清除li浮动
+        &>ul{
+          float:none;
+          &:last-child{
+            text-align:center;
+            margin-left:0;
+            &::before{
+              content:"";
+              display:inline-block;
+              width:10px;
+              height:10px;
+              background:#fff;
+              @include border-radius-one(50%);
+            }
+          }
+          &>li{
+            float:none;
+            text-align:center;
+            a{
+              color:#fff;
+            }
+            ul{
+              background:none;
+              border-top:1px solid rgba(255, 255, 255, 0.4);
+              border-bottom:1px solid rgba(255, 255, 255, 0.4);
+              &.drop-down {
+                position: relative;
+                width: 100%;
+                top: auto;
+                left: auto;
+                &:before {
+                  content:"";
+                  display:block;
+                  border-width:0 8px 8px;
+                  border-color:transparent transparent rgba(255, 255, 255, 0.53);
+                  border-style:solid;
+                  position:absolute;
+                  top:-8px;
+                  left:50%-4;
+                }
+                li {
+                }
+              }
+            }
+          }
+        }
+        // 菜单栏展示形式
+        //-------start------
+        // 从底部向上滑出
+        &.effect-1{
+          position:fixed;
+          bottom:-500px;
+          filter:alpha(opacity=0);
+          width:100%;
+          background:#e7413b;
+          @include transition(.5s);
+        }
+        // 从顶部导航栏，向下滑出
+        &.effect-2{
+          width:100%;
+          max-height:0;
+          background:#e7413b;
+          @include transition(0.5s);
+        }
+        // 右上角出现
+        &.effect-3{
+          position:absolute;
+          top:$MH+10px;
+          right:5px;
+          width:200px;
+          opacity:0;
+          background:#e7413b;
+          @include transition(0.5s);
+          &:before{
+            content:"";
+            display:block;
+            border-width:0 8px 8px;
+            border-color:transparent transparent #e7413b;
+            border-style:solid;
+            position:absolute;
+            top:-8px;
+            right:20px;
+          }
+        }
+        // 右边滑出
+        &.effect-4{
+          position:fixed;
+          width:200px;
+          height:100%;
+          right:-200px;
+          padding-top:$MH;
+          @include transition(0.5s);
+        }
+        //------end-------
+        // 显示菜单栏
+        // 点击后的效果
+        &.show {
+          opacity: 1;
+          filter: alpha(opacity=100);
+          background: #e7413b;
+          // 菜单栏展示形式
+          // 从底部向上滑出
+          &.effect-1 {
+            bottom: 0;
+          }
+          // 从顶部导航栏，向下滑出
+          &.effect-2 {
+            max-height:500px;
+          }
+          // 右上角出现
+          &.effect-3{
+            opacity:1;
+            background:#e7413b;
+            @include transition(0.5s);
+          }
+          // 右边滑出
+          &.effect-4{
+            right:0;
+            @include transition(0.5s);
+            @include box-shadow(0,0,10px,0, #992b27);
+          }
+        }
+      }
+      button.mobile-menu {
+        display: block;
+      }
+    }
+  }
+  &.fixed{
+    position:fixed;
+    width:100%;
+  }
+}
+body{
+  right:0;
+  position:relative;
+  @include transition(0.5s);
+  height:10000px;
+  &.e-4{
+    position:fixed;
+    right:200px;
+    width:100%;
+    overflow:hidden;
+  }
+}

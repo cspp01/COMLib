@@ -1,0 +1,86 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+/* //////////////////////////////////////////// */
+/* //////////////////////////////////////////// */
+/* ················网格系统··············· */
+/* 网格系统变量 */
+$screen-sm-min:768px; // 小型设备
+$screen-md-min:992px; // 中型设备
+$screen-lg-min:1200px; // 大型设备
+$md-container-width:970px; // 中型设备container宽
+$lg-container-width:1000px; // 大型设备container宽
+$padd:10px;
+$colnum:24;
+
+/*/////////////////////////////注入器///////////////////////////////////*/
+.container {
+  @media (min-width: $screen-md-min) {
+    width: $md-container-width;
+    margin: 0 auto;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $lg-container-width;
+  }
+  &:after{
+    content:"";
+    display:block;
+    clear:both;
+  }
+  zoom:1;
+}
+/*////////////////////////////////////////////////////////////////*/
+/* 100%布局 */
+.container-fill {
+  width:100%;
+}
+/*////////////////////////////////////////////////////////////////*/
+
+  /* 行 */
+  div.line{
+  }
+
+  /*////////////////////////////////////////////////////////////////*/
+/* 列 */
+@for $i from 1 through $colnum {
+  .col-xs-#{$i},.col-sm-#{$i},.col-md-#{$i},.col-lg-#{$i} {
+    float:left;
+  }
+  .line{
+    margin-left:-$padd;
+    margin-right:-$padd;
+    margin-top:10px;
+    margin-bottom:10px;
+    .col-xs-#{$i},.col-sm-#{$i},.col-md-#{$i},.col-lg-#{$i} {
+      padding:0 $padd;
+    }
+  }
+}
+/* 循环定义超小型设备的col-sm-1 到 12 */
+@for $i from 1 through $colnum {
+  .col-xs-#{$i} { width: 100% / $colnum * $i; }
+  .col-xs-offset-#{$i} { margin-left: 100% / 12 * $i; }
+}
+@media (min-width:$screen-sm-min){
+  /* 循环定义小型设备的col-sm-1 到 12 */
+  @for $i from 1 through $colnum {
+    .col-sm-#{$i} { width: 100% / $colnum * $i; }
+    .col-sm-offset-#{$i} { margin-left: 100% / $colnum * $i; }
+  }
+}
+@media (min-width:$screen-md-min){
+  @for $i from 1 through $colnum {
+    .col-md-#{$i} { width: 100% / $colnum * $i; }
+    .col-md-offset-#{$i} { margin-left: 100% / $colnum * $i; }
+  }
+}
+@media (min-width:$screen-lg-min){
+  @for $i from 1 through $colnum {
+    .col-lg-#{$i} { width: 100% / $colnum * $i; }
+    .col-lg-offset-#{$i} { margin-left: 100% / $colnum * $i; }
+  }
+}
+/*////////////////////////////////////////////////////////////////*/
+/*//////////////////////////////////offset//////////////////////////////*/

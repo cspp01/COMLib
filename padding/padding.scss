@@ -1,0 +1,5 @@
+@for $i from 1 through 5 {
+  .padd-one-#{ $i } {
+    padding:4px*$i;
+  }
+}

@@ -1,0 +1,17 @@
+@mixin transition( $a:.5s ) {
+  transition-property:all;
+  transition-duration:$a;
+}
+@mixin box-shadow( $a,$b, $c, $d, $e ) {
+  box-shadow:$a $b $c $d $e;
+}
+@mixin border-radius-one( $a ) {
+  border-radius:$a;
+}
+@mixin transform-scale( $a:90deg, $b:center, $c:center ) {
+  transform:rotate($a);
+  transform-origin:$b $c;
+}
+@mixin transform-translate( $a, $b ) {
+  transform:translate($a,$b);
+}

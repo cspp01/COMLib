@@ -1,0 +1,147 @@
+.navbar{
+  // 导航栏高度
+  $MH:40px;
+  // 导航栏背景颜色
+  $MBG_COLOR: #e7413b;
+  // 导航栏字体颜色
+  $MF_COLOR:#777;
+  // 导航栏字体hover后的颜色
+  $MFH_COLOR:#333;
+  height:$MH;
+  color:$MF_COLOR;
+  background:$MBG_COLOR;
+  // logo
+  .logo{
+    line-height:$MH;
+    float:left;
+    height:$MH;
+    color:#fff;
+    img{
+      max-height:$MH;
+      display:block;
+    }
+  }
+  // 不使用js，利用input(checkbox)实现菜单栏的显示隐藏
+  #show-hid{
+    display:none;
+    &:checked+.mobile-menu{
+      label{
+        &:before{
+          @include transform-scale(16deg,left,center);
+        }
+        &:after{
+          @include transform-scale(-16deg,left,center);
+        }
+      }
+      &+.menu{
+        opacity:1;
+        filter:alpha(opacity=100);
+        background:#e7413b;
+        &.effect-bottom{
+          bottom:0;
+        }
+        // 顶部展示
+        &.effect-top{
+          //max-height:280px;
+        }
+      }
+    }
+  }
+  //菜单栏
+  .menu{
+    line-height:$MH;
+    float:right;
+    ul{
+      li{
+        float:left;
+        a{
+          color:$MF_COLOR;
+          display:block;
+          height:$MH;
+          padding:0 10px;
+          &:hover{
+            color:$MFH_COLOR;
+          }
+        }
+      }
+      &:after{
+        content:"";
+        display:block;
+        clear:both;
+      }
+    }
+  }
+  // 移动端菜单按钮
+  button.mobile-menu{
+    background:none;
+    outline:none;
+    border:none;
+    display:none;
+    margin-right:15px;
+    float:right;
+    //padding:9px 10px;
+    // 被继承的样式
+    .btn{
+      display:block;
+      width:22px;
+      height:2px;
+      background:#fff;
+      margin:5px 0;
+    }
+    label{
+      display:block;
+      &:before{
+        content:"";
+        @extend .btn;
+        @include transition(.5s);
+      }
+      span{
+        @extend .btn;
+      }
+      &:after{
+        content:"";
+        @extend .btn;
+        @include transition(.5s);
+      }
+    }
+  }
+  // 响应式导航栏
+  &.nav-response{
+    @media ( max-width:$screen-md-min ) {
+      .logo{
+        margin-left:15px;
+      }
+      .menu {
+        // 菜单栏展示形式
+        // 底部展示
+        &.effect-bottom{
+          position:fixed;
+          bottom:-500px;
+          filter:alpha(opacity=0);
+          width:100%;
+          background:#e7413b;
+          @include transition(.5s);
+        }
+        // 顶部展示
+        &.effect-top{
+          //max-height:0;
+          width:100%;
+          background:#e7413b;
+          @include transition(0.5s);
+        }
+        ul{
+          li{
+            float:none;
+            text-align:center;
+            a{
+              color:#fff;
+            }
+          }
+        }
+      }
+      button.mobile-menu {
+        display: block;
+      }
+    }
+  }
+}
