@@ -24,11 +24,13 @@
             if( !this.on ) {
                 this.mobileMenu.addClass( 'active' );
                 this.menu.addClass( 'show' );
+                $('body,html').addClass( 'over' );
                 this.menu.hasClass( 'effect-4' ) && $('body').addClass( 'e-4' );
                 this.on = true;
             } else {
                 this.mobileMenu.removeClass( 'active' );
                 this.menu.removeClass( 'show' );
+                $('body,html').removeClass( 'over' );
                 this.menu.hasClass( 'effect-4' ) && $('body').removeClass( 'e-4' );
                 this.on = false;
             }

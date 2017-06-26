@@ -1,6 +1,20 @@
+// sass公共
 @import '__pub/__pub.scss';
+// 修改默认
+@import 'base/base.scss';
+// 网格
 @import 'grid/grid.scss';
+// 属性
 @import 'property/pro.scss';
+// 表单
 @import 'form/form.scss';
+// padding系统
 @import 'padding/padding.scss';
+// 排版
+@import 'typesetting/typesetting.scss';
+// 导航栏
 @import 'nav/nav.scss';
+// 超级显示仓
+@import 'super show/super-show.scss';
+// css实现的各种形状
+@import 'various shapes/sha.scss';

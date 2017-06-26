@@ -1,0 +1,20 @@
+$BASE_H1:6px;
+$BASE_H4:4px;
+@for $i from 1 through 6 {
+  h#{$i}{
+    @if $i < 4  {
+      // h1 - h3的样式
+      font-size:( 7 - $i ) * $BASE_H1;
+      margin:10px 0 20px;
+    } @else {
+      // h4 - h6的样式
+      font-size:( 7 - $i + 2 ) * $BASE_H4;
+      margin:10px 0;
+    }
+    font-weight:500;
+  }
+}
+p{
+  margin-bottom:10px;
+  font-size:15px;
+}
