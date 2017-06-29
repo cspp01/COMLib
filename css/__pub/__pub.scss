@@ -16,3 +16,12 @@
   transform:translate($a,$b);
 }
 $MC:#e7413b;
+/* ················网格系统··············· */
+/* 网格系统变量 */
+$screen-sm-min:768px; // 小型设备
+$screen-md-min:992px; // 中型设备
+$screen-lg-min:1200px; // 大型设备
+$md-container-width:970px; // 中型设备container宽
+$lg-container-width:1000px; // 大型设备container宽
+$padd:10px;
+$colnum:24;

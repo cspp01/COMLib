@@ -6,12 +6,13 @@ $screen-sm-min:768px; // 小型设备
 $screen-md-min:992px; // 中型设备
 $screen-lg-min:1200px; // 大型设备
 $md-container-width:970px; // 中型设备container宽
-$lg-container-width:1000px; // 大型设备container宽
+$lg-container-width:1020px; // 大型设备container宽
 $padd:10px;
 $colnum:24;
 
 /*/////////////////////////////注入器///////////////////////////////////*/
 .container {
+  padding:0 10px;
   @media (min-width: $screen-md-min) {
     width: $md-container-width;
     margin: 0 auto;
@@ -43,21 +44,23 @@ $colnum:24;
   .col-xs-#{$i},.col-sm-#{$i},.col-md-#{$i},.col-lg-#{$i} {
     float:left;
   }
-  .line{
-    margin-left:-$padd;
-    margin-right:-$padd;
-    margin-top:10px;
-    margin-bottom:10px;
-    .col-xs-#{$i},.col-sm-#{$i},.col-md-#{$i},.col-lg-#{$i} {
-      padding:0 $padd;
+  .line {
+    .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i} {
+      padding: 0 $padd;
     }
-    &:after{
-      content:"";
-      display:block;
-      clear:both;
-    }
-    zoom:1;
   }
+}
+.line{
+  margin-left:-$padd;
+  margin-right:-$padd;
+  margin-top:10px;
+  margin-bottom:10px;
+  &:after{
+    content:"";
+    display:block;
+    clear:both;
+  }
+  zoom:1;
 }
 /* 循环定义超小型设备的col-sm-1 到 12 */
 @for $i from 1 through $colnum {

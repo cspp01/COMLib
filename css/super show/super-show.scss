@@ -1,10 +1,11 @@
 .super-show{
   // 超级展示仓
-  background:$MC;
+  background:$MC; // 超级展示仓默认背景色
   padding:50px 0 50px;
   text-align:center;
   margin-bottom:30px;
-  color:#fff;
+  color:#fff; // 超级展示仓默认字体颜色
+  // 主标题
   h1{
     font:{
       size:100px;
@@ -13,12 +14,14 @@
     line-height:1;
     margin:30px 0 10px;
   }
+  // 描述
   p{
     margin:10px 0 30px;
     font:{
       size:21px;
       weight:200;
     }
+    // 按钮
     a{
       color:rgba(255, 255, 255, 0.7);
       display:inline-block;
@@ -32,6 +35,25 @@
       &:hover{
         color:rgba(255, 255, 255, 1);
         border:3px double rgba(255, 255, 255, 1);
+      }
+    }
+  }
+  // 在移动设备时改变字体大小
+  @media ( max-width:$screen-sm-min ) {
+    padding:50px 20px 50px;
+    h1{
+      font:{
+        size:70px;
+      }
+    }
+    p{
+      font:{
+        size:18px;
+      }
+      a{
+        font: {
+          size: 14px;
+        }
       }
     }
   }
